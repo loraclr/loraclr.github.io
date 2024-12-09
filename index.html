@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="LoRACLR: Contrastive Adaptation for Customization of Diffusion Models">
+  <meta property="og:title" content="LoRACLR: Contrastive Adaptation for Customization of Diffusion Models"/>
+  <meta property="og:description" content="We present LoRACLR, a method for merging personalized LoRA models for multi-concept image generation, aligning model weights with a contrastive objective to ensure distinct, high-quality concept synthesis."/>
+  <meta property="og:url" content="https://enis.dev/loraclr"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/images/teaser.jpg" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="Multi-concept image generation, LoRA, contrastive objective, lora composition, personalized image synthesis">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://www.w3counter.com/tracker.js?id=154618"></script>
+
+  <title>LoRACLR: Contrastive Adaptation for Customization of Diffusion Models</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">LoRACLR: Contrastive Adaptation for Customization of Diffusion Models</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://enis.dev/" target="_blank">Enis Simsar</a><sup>1</sup>,</span>
+                <span class="author-block">
+                  <a href="https://da.inf.ethz.ch/" target="_blank">Thomas Hofmann</a><sup>1</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://federicotombari.github.io/" target="_blank">Federico Tombari</a><sup>2,3</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://pinguar.org/" target="_blank">Pinar Yanardag</a><sup>4</sup>,</span>
+                </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block"><sup>1</sup>ETH Zürich,</span>
+                    <span class="author-block"><sup>2</sup>TU Munich,</span>
+                    <span class="author-block"><sup>3</sup>Google</span>
+                    <span class="author-block"><sup>4</sup>Virginia Tech</span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                      <!-- ArXiv abstract Link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/abs/2412.09622" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="ai ai-arxiv"></i>
+                        </span>
+                        <span>arXiv</span>
+                      </a>
+                    </span>
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2412.09622.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    <!-- Supplementary PDF link -->
+                    <!-- <span class="link-block">
+                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span> -->
+
+                  <!-- Github link -->
+                  <!-- <span class="link-block">
+                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser image-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/teaser.jpg" alt="LoRACLR teaser"/>
+      <h2 class="subtitle has-text-centered">
+        <b>High-Fidelity Multi-Concept Image Generation.</b> Examples illustrating LoRACLR's ability to generate cohesive scenes with multiple distinct characters across diverse settings, such as noir detective themes and sci-fi realism. Each scene demonstrates LoRACLR's capability to combine varied concepts seamlessly, preserving the original identities of each character, as seen in <i>CONCEPTS</i>.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser image -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent advances in text-to-image customization have enabled high-fidelity, context-rich generation of personalized images, allowing specific concepts to appear in a variety of scenarios. However, current methods struggle with combining multiple personalized models, often leading to attribute entanglement or requiring separate training to preserve concept distinctiveness. We present LoRACLR, a novel approach for multi-concept image generation that merges multiple LoRA models, each fine-tuned for a distinct concept, into a single, unified model without additional individual fine-tuning. LoRACLR uses a contrastive objective to align and merge the weight spaces of these models, ensuring compatibility while minimizing interference. By enforcing distinct yet cohesive representations for each concept, LoRACLR enables efficient, scalable model composition for high-quality, multi-concept image synthesis. Our results highlight the effectiveness of LoRACLR in accurately merging multiple concepts, advancing the capabilities of personalized image generation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Method Overview -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <h2 class="title">Method Overview</h2>
+        <figure class="image">
+          <img src="static/images/framework.jpg" alt="LoRACLR Framework">
+        </figure>
+        <p><strong>Framework Overview.</strong> The framework comprises two main stages: (a) generating concept-specific representations with individual pre-trained LoRA models and (b) merging these representations into a unified model using a novel contrastive objective. In (a), each LoRA model produces input-output pairs (X<sub>i</sub>, Y<sub>i</sub>) for distinct concepts (V<sub>1</sub>, V<sub>2</sub>, &hellip;, V<sub>n</sub>), establishing positive pairs (aligned concepts) and negative pairs (unrelated concepts). In (b), these representations are combined into a single model, &Delta;W, to enable multi-concept synthesis. <em>LoRACLR</em> aligns attracting positive pairs to ensure identity retention and repelling negative pairs to prevent cross-concept interference.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Method Overview -->
+
+
+<!-- Qualitative Results -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <h2 class="title">Qualitative Results</h2>
+        <figure class="image">
+          <img src="static/images/qualitatives.png" alt="LoRACLR Framework">
+        </figure>
+        <p><strong>Qualitative Results.</strong> <em>LoRACLR</em> effectively combines different numbers of unique concepts across a wide range of scenes, producing high-fidelity compositions that capture the complexity and nuance of multi-concept prompts in diverse environments. <em>LoRACLR</em> preserves the identity of each concept, ensuring accurate representation in composite scenes while also maintaining fidelity in single-concept generation, as demonstrated in the last row. Real images from the original concepts are shown on the left for reference.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Qualitative Results -->
+
+<!-- Non-Human Subject Generation Results -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <h2 class="title">Non-Human Subject Generation Results</h2>
+        <figure class="image">
+          <img src="static/images/nonhuman.png" alt="LoRACLR nonhuman">
+        </figure>
+        <p><strong>Non-Human Subject Generation.</strong> Our method effectively combines diverse concepts such as animals, objects (e.g., tables, chairs, vases), and monuments (e.g., pyramids, rocks) into cohesive and visually appealing scenes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Non-Human Subject Generation Results -->
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="title has-text-centered">Qualitative Comparison</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/comparison1.jpg" alt="Qualitative Comparison"/>
+        <h2 class="subtitle has-text-centered">
+          <b>Multi-Concept Comparison.</b> Composite images generated by our method and competing methods (Orthogonal Adaptation, Mix-of-Show, Prompt+) for multi-concept prompts. Each row depicts a different scene defined by the text prompts. Our method consistently preserves individual identities, while others struggle with identity preservation and concept interference.
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/comparison2.jpg" alt="Qualitative Comparison"/>
+        <h2 class="subtitle has-text-centered">
+          <b>Multi-Concept Comparison.</b> Composite images generated by our method and competing methods (Orthogonal Adaptation, Mix-of-Show, Prompt+) for multi-concept prompts. Each row depicts a different scene defined by the text prompts. Our method consistently preserves individual identities, while others struggle with identity preservation and concept interference.
+        </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/comparison3.jpg" alt="Qualitative Comparison"/>
+        <h2 class="subtitle has-text-centered">
+          <b>Multi-Concept Comparison.</b> Composite images generated by our method and competing methods (Orthogonal Adaptation, Mix-of-Show, Prompt+) for multi-concept prompts. Each row depicts a different scene defined by the text prompts. Our method consistently preserves individual identities, while others struggle with identity preservation and concept interference.
+       </h2>
+     </div>
+     <div class="item">
+      <!-- Your image here -->
+      <img src="static/images/comparison4.jpg" alt="Qualitative Comparison"/>
+      <h2 class="subtitle has-text-centered">
+        <b>Multi-Concept Comparison.</b> Composite images generated by our method and competing methods (Orthogonal Adaptation, Mix-of-Show, Prompt+) for multi-concept prompts. Each row depicts a different scene defined by the text prompts. Our method consistently preserves individual identities, while others struggle with identity preservation and concept interference.
+      </h2>
+   </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+<!-- Style LoRA Integration -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <h2 class="title">Style LoRA Integration</h2>
+        <figure class="image">
+          <img src="static/images/style.png" alt="LoRACLR Style">
+        </figure>
+        <p><b>Style LoRA Integration.</b> Our method integrates diverse styles, such as comic art and oil painting, into multi-subject compositions, maintaining high stylistic fidelity and content coherence. Examples include scenes in <i>comic art</i> and <i>oil painting</i> styles, highlighting the flexibility of our approach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Style LoRA Integration -->
+
+<!-- Quantitative Results -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <h2 class="title">Quantitative Results</h2>
+        <figure class="image">
+          <img src="static/images/quantitative.png" alt="LoRACLR Quantitative">
+        </figure>
+        <p><b>Quantitative Results.</b> Comparison of <i>LoRACLR</i> against state-of-the-art models, evaluated before and after merging. <i>LoRACLR</i> achieves competitive performance across all metrics, with notable improvements in image and identity alignment post-merging.</p>
+        <br>
+        <figure class="image">
+          <img src="static/images/quantitative2.jpg" alt="LoRACLR Quantitative">
+        </figure>
+        <p><b>Quantitative Results on Number of Concepts.</b> Text alignment, image alignment, and identity preservation scores as the number of merged concepts increases. Our method achieves high scores across all metrics, maintaining identity and prompt adherence. Dots represent the baseline metrics for each LoRA model before merging, serving as a reference for performance comparisons.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Quantitative Results -->
+
+
+
+<!-- Societal Impact abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Societal Impact</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our method provides a powerful tool for merging pre-trained LoRA models to enable multi-subject image synthesis. This capability has the potential to significantly enhance creative expression, improve personalized image generation, and address limitations in existing image synthesis methods. By leveraging LoRA models, which can be fine-tuned on specific concepts, our approach ensures results that are coherent and adaptable to diverse needs.
+            <br><br>
+            Unlike prior approaches that rely on generic, biased datasets for facial priors, our method can integrate personalized priors, ensuring that results are more faithful and accurate to an individual’s identity. This feature is particularly valuable for underrepresented groups, as it mitigates biases inherent in large, generic datasets and ensures high-quality, equitable outcomes. By empowering users to create personalized and inclusive image compositions, we aim to enhance satisfaction with synthesized images and promote fairness in image synthesis technologies.
+            <br><br>
+            However, these advancements come with ethical considerations. The ability to synthesize novel images through LoRA model composition introduces risks of misuse, such as creating deepfakes or misleading content. While our approach requires access to well-trained LoRA models and thus sets a barrier to entry for malicious actors, the potential for harm cannot be ignored. Moreover, research suggests that deep-generated images are still detectable as synthetic, reducing the risk of widespread misuse at scale. Nevertheless, we emphasize the importance of deploying our method responsibly and call for continued research into ethical safeguards and detection mechanisms in generative modeling. By fostering a culture of responsible innovation, we aim to ensure that our advancements contribute positively to society.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Societal Impact abstract -->
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{simsar2024loraclr,
+    title={LoRACLR: Contrastive Adaptation for Customization of Diffusion Models}, 
+    author={Enis Simsar and Thomas Hofmann and Federico Tombari and Pinar Yanardag},
+    year={2024},
+    eprint={2412.09622},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
